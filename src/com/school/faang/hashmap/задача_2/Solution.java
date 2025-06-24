@@ -1,6 +1,7 @@
 package com.school.faang.hashmap.задача_2;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -10,10 +11,13 @@ public class Solution {
 
     public static void main(String[] args) {
         Solution example = new Solution();
-        example.addUser("petrov", new User(1, "petrov", LocalDate.now().toString()));
-        example.addUser("af_pp", new User(2, "afonia", LocalDate.now().plusDays(1).toString()));
-        example.addUser("iiii", new User(31, "ivanov ivan", LocalDate.now().minusDays(20).toString()));
+        example.addUser("petrov", new User("petrov", LocalDateTime.now(), "petrov"));
+        example.addUser("af_pp", new User("afonia", LocalDateTime.now().plusDays(1), "af_pp"));
+        example.addUser("iiii", new User("ivanov ivan", LocalDateTime.now().minusDays(20), "iiii"));
+        example.printUsers(example);
+    }
 
+    public void printUsers(Solution example) {
         Map<String, User> db = example.users;
         for (Map.Entry<String, User> user : db.entrySet()) {
             System.out.println("Пользователь @" + user.getKey() + " полное имя: " + user.getValue().getFullName());
